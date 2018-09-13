@@ -1,0 +1,1 @@
+An exploration of various methods to build a Blackjack AI, from simple statistics to (hopefully?) neural networks.

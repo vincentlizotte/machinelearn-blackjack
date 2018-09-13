@@ -1,0 +1,4 @@
+- Handle soft vs hard scores
+- Split dataset in 2: hitting and standing. Right now hitting and not dying is considered a "win" which is sorta meaningless
+- Cleanup and refactor as a more template-method approach
+- Perrrrrffff! I mean I know Python's slow compared to C++, but the current perf level is pretty bad, at 20k simulations a second.
