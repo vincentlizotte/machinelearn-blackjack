@@ -1,0 +1,2 @@
+from strategy.hitstandteststrategy import HitStandTestStrategy
+from strategy.hitstandtrainstrategy import HitStandTrainStrategy

@@ -2,13 +2,31 @@ import random
 
 
 class Game:
-    def __init__(self, decks_count):
+    def __init__(self, decks_count, reset_on_dealer_blackjack):
         self.deck = Deck(decks_count)
+        self.reset_on_dealer_blackjack = reset_on_dealer_blackjack
 
     def start_round(self):
         self.deck.reset()
-        round = Round(self.deck)
-        return round
+        game_round = Round(self.deck)
+        return game_round
+
+    def run_managed_game(self, round_callback):
+        game_round = self.start_round()
+
+        if self.reset_on_dealer_blackjack:
+            while game_round.dealer_has_blackjack():
+                game_round = self.start_round()
+
+        while game_round.is_player_alive():
+            action = round_callback(game_round.player_sum, game_round.dealer_sum)
+            if action == 'HIT':
+                game_round.draw_for_player()
+            elif action == 'STAND':
+                return game_round.resolve_round()
+            else:
+                raise ValueError(f"Invalid player action: {action}")
+        return 'LOSE'
 
 
 class Deck:
