@@ -10,8 +10,8 @@ from strategy import HitStandTrainStrategy, HitStandTestStrategy
 
 if __name__ == '__main__':
     algorithm = "OriginalPrototypeRandomExploration"
-    test_train_iterations_to_run = 10
-    seconds_to_run = 2
+    test_train_iterations_to_run = 100000
+    seconds_to_run = 60
     original_prototype_seconds_to_run = time.time()
 
     game = Game(1, reset_on_dealer_blackjack=True)
@@ -68,12 +68,12 @@ if __name__ == '__main__':
             initial_player_score = game_round.player_sum
             initial_dealer_score = game_round.dealer_sum
             action = 'nothing'
-            print(f'Round start: {initial_player_score}. Dealer: {initial_dealer_score}')
+            #print(f'Round start: {initial_player_score}. Dealer: {initial_dealer_score}')
             while game_round.is_player_alive():
                 initial_player_score = game_round.player_sum
                 initial_dealer_score = game_round.dealer_sum
                 action = random.choice(['hit', 'hold'])
-                print(f" - Player: {action.upper()} on {initial_player_score} vs Dealer's {initial_dealer_score}")
+                #print(f" - Player: {action.upper()} on {initial_player_score} vs Dealer's {initial_dealer_score}")
 
                 if action == 'hit':
                     game_round.draw_for_player()
